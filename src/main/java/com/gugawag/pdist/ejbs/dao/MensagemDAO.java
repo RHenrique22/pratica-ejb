@@ -18,10 +18,10 @@ public class MensagemDAO {
     }
 
     public List<Mensagem> listar() {
-        return this.entityManager.createQuery("FROM Mensagem M").getResultList();
+        return (List<Mensagem>) this.entityManager.createQuery(String.format("FROM Mensagem M")).getResultList();
     }
 
     public Mensagem pesquisar(long id) {
-        return (Mensagem) this.entityManager.createQuery("FROM Mensagem M WHERE M.id = " + id).getSingleResult();
+        return (Mensagem) this.entityManager.createQuery(String.format("FROM Mensagem M WHERE M.id = %d", id)).getSingleResult();
     }
 }
